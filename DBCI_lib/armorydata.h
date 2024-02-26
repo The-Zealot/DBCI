@@ -69,10 +69,12 @@ public:
     void setGuild(const QString &newGuild);
 
     Faction faction() const;
+    QString faction(QString lang) const;
     void setFaction(Faction newFaction);
     void setFaction(QString newFaction, QString lang = "ru");
 
     Race race() const;
+    QString race(QString lang) const;
     void setRace(Race newRace);
     void setRace(QString newRace, QString lang = "ru");
 
@@ -80,6 +82,7 @@ public:
     void setStatus(Status newStatus);
 
     Class getClass() const;
+    QString getClass(QString lang) const;
     void setClass(Class newClass);
     void setClass(QString newClass, QString lang = "ru");
 

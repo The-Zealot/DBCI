@@ -28,6 +28,14 @@ void MainWindow::loadNext()
     qDebug() << "Name:" << ad.name();
     qDebug() << "Guild:" << ad.guild();
     qDebug() << "ID:" << ad.id();
+
+    ui->editName->setText(ad.name());
+    ui->editGuild->setText(ad.guild());
+    ui->editID->setText(QString::number(ad.id()));
+
+    ui->editFaction->setText(ad.faction("ru"));
+    ui->editRace->setText(ad.race("ru"));
+    ui->editClass->setText(ad.getClass("ru"));
 }
 
 

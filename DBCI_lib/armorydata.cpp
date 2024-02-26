@@ -39,6 +39,21 @@ ArmoryData::Faction ArmoryData::faction() const
     return _faction;
 }
 
+QString ArmoryData::faction(QString lang) const
+{
+    switch(_faction)
+    {
+    case ArmoryData::None:
+        return "Без фракции";
+    case ArmoryData::Alliance:
+        return "Альянс";
+    case ArmoryData::Horde:
+        return "Орда";
+    default:
+        return "";
+    }
+}
+
 void ArmoryData::setFaction(Faction newFaction)
 {
     _faction = newFaction;
@@ -55,6 +70,41 @@ void ArmoryData::setFaction(QString newFaction, QString lang)
 ArmoryData::Race ArmoryData::race() const
 {
     return _race;
+}
+
+QString ArmoryData::race(QString lang) const
+{
+    switch (_race)
+    {
+    case ArmoryData::Human:
+        return "Человек";
+    case ArmoryData::Dwarft:
+        return "Дворф";
+    case ArmoryData::NightElf:
+        return "Ночной эльф";
+    case ArmoryData::Gnome:
+        return "Гноме";
+    case ArmoryData::Draenei:
+        return "Дреней";
+    case ArmoryData::Worgen:
+        return "Ворген";
+    case ArmoryData::Orc:
+        return "Орк";
+    case ArmoryData::Undead:
+        return "Нежить";
+    case ArmoryData::Tauren:
+        return "Таурен";
+    case ArmoryData::Troll:
+        return "Тролль";
+    case ArmoryData::BloodElf:
+        return "Эльф крови";
+    case ArmoryData::Goblin:
+        return "Гоблин";
+    case ArmoryData::Pandaren:
+        return "Пандарен";
+    default:
+        return "";
+    }
 }
 
 void ArmoryData::setRace(Race newRace)
@@ -96,6 +146,37 @@ ArmoryData::Class ArmoryData::getClass() const
     return _class;
 }
 
+QString ArmoryData::getClass(QString lang) const
+{
+    switch(_class)
+    {
+    case ArmoryData::Warrior:
+        return "Воин";
+    case ArmoryData::Paladin:
+        return "Паладин";
+    case ArmoryData::Hunter:
+        return "Охотник";
+    case ArmoryData::Rogue:
+        return "Разбойник";
+    case ArmoryData::Priest:
+        return "Жрец";
+    case ArmoryData::DeathKnight:
+        return "Рыцарь Смерти";
+    case ArmoryData::Shaman:
+        return "Шаман";
+    case ArmoryData::Mage:
+        return "Маг";
+    case ArmoryData::Warlock:
+        return "Чернокнижник";
+    case ArmoryData::Monk:
+        return "Монах";
+    case ArmoryData::Druid:
+        return "Друид";
+    default:
+        return "";
+    }
+}
+
 void ArmoryData::setClass(Class newClass)
 {
     _class = newClass;
@@ -115,7 +196,7 @@ void ArmoryData::setClass(QString newClass, QString lang)
     if (newClass == "Чернокнижник") _class  = Class::Warlock;
     if (newClass == "Монах") _class         = Class::Monk;
     if (newClass == "Друид") _class         = Class::Druid;
-    if (newClass == "Рыцарь смерти") _class = Class::DeathKnight;
+    if (newClass == "Рыцарь Смерти") _class = Class::DeathKnight;
 }
 
 qint32 ArmoryData::rating() const
