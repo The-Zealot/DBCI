@@ -29,3 +29,6 @@ else:unix: LIBS += -L$$OUT_PWD/../DBCI_lib/ -lDBCI_lib
 
 INCLUDEPATH += $$PWD/../DBCI_lib
 DEPENDPATH += $$PWD/../DBCI_lib
+
+RESOURCES += \
+    resource.qrc
