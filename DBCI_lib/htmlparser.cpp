@@ -74,6 +74,13 @@ void HtmlParser::getArmoryUrl()
     _isFirstLoad = false;
 
     QString armoryUrl = getTagValue(_data, "<tr class=\"odd\">\n<td><a href=\"", "\">");
+
+    if (armoryUrl.isEmpty())
+    {
+        qDebug() << "getTagValue() returns wrong name";
+        return;
+    }
+
     QStringList characterData = getTagValue(_data, "<tr class=\"odd\">\n", "</tr>").split("</td>");
 
     _armoryData.setName(getTagValue(characterData.at(0), ".html\">", "</a>"));
