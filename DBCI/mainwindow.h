@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <htmlparser.h>
+#include <textwriter.h>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +25,11 @@ public slots:
 private slots:
     void on_pushButton_clicked();
 
+    void on_buttonSave_clicked();
+
 private:
     Ui::MainWindow *ui;
     HtmlParser* _parser;
+    ArmoryData _ad;
 };
 #endif // MAINWINDOW_H

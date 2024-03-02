@@ -228,3 +228,8 @@ void ArmoryData::setRealm(qint32 newRealm)
 {
     _realm = newRealm;
 }
+
+bool ArmoryData::isEmpty()
+{
+    return _name.isEmpty();
+}

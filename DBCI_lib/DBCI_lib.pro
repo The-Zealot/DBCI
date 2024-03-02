@@ -13,13 +13,21 @@ CONFIG += c++11
 SOURCES += \
     armorydata.cpp \
     dbci_lib.cpp \
-    htmlparser.cpp
+    htmlparser.cpp \
+    ireader.cpp \
+    iwriter.cpp \
+    textreader.cpp \
+    textwriter.cpp
 
 HEADERS += \
     DBCI_lib_global.h \
     armorydata.h \
     dbci_lib.h \
-    htmlparser.h
+    htmlparser.h \
+    ireader.h \
+    iwriter.h \
+    textreader.h \
+    textwriter.h
 
 # Default rules for deployment.
 unix {

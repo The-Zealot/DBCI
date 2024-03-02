@@ -95,6 +95,8 @@ public:
     qint32 realm() const;
     void setRealm(qint32 newRealm);
 
+    bool isEmpty();
+
 private:
     QString _name;
     QString _guild;
