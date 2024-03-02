@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     _parser = new HtmlParser(this);
 
     connect(_parser, &HtmlParser::parsed, this, &MainWindow::loadNext);
+    connect(_parser, &HtmlParser::failed, this, &MainWindow::showError);
 
 //    _parser->getCharacterData("Негрофиллер", "10");
 }
@@ -25,6 +26,7 @@ void MainWindow::loadNext()
 
     ArmoryData ad = _parser->getArmory();
 
+
     qDebug() << "Name:" << ad.name();
     qDebug() << "Guild:" << ad.guild();
     qDebug() << "ID:" << ad.id();
@@ -38,6 +40,10 @@ void MainWindow::loadNext()
     ui->editClass->setText(ad.getClass("ru"));
 }
 
+void MainWindow::showError()
+{
+    QMessageBox::warning(this, "Некорректные данные", _parser->lastError());
+}
 
 void MainWindow::on_pushButton_clicked()
 {

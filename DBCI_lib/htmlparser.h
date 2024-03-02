@@ -23,6 +23,8 @@ public:
     QStringList getCharacterData(const QString &name, QString realm = "10");
     ArmoryData getArmory();
 
+    const QString &lastError() const;
+
 public slots:
     void replyFinished(QNetworkReply* reply);
     void getArmoryUrl();
@@ -31,12 +33,14 @@ public slots:
 signals:
     void pageLoaded();
     void parsed();
+    void failed();
 
 private:
     QNetworkAccessManager* _manager;
     bool _isFirstLoad;
     QByteArray _data;
     ArmoryData _armoryData;
+    QString _error;
 };
 
 #endif // HTMLPARSER_H

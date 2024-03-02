@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <htmlparser.h>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,7 @@ public:
 
 public slots:
     void loadNext();
+    void showError();
 
 private slots:
     void on_pushButton_clicked();
