@@ -3,6 +3,7 @@
 
 #include "DBCI_lib_global.h"
 #include <QObject>
+#include <QMap>
 
 #define CLASS_COUNT         11
 #define FACTION_COUNT       2
@@ -40,7 +41,11 @@ public:
 
     enum Status
     {
-
+        Unknown     = 0,
+        Humiliated  = 1,
+        Terminated  = 2,
+        Amnestied   = 3,
+        Sold        = 4,
     };
 
     enum Class
@@ -79,6 +84,7 @@ public:
     void setRace(QString newRace, QString lang = "ru");
 
     Status status() const;
+    QString status(QString lang) const;
     void setStatus(Status newStatus);
 
     Class getClass() const;
@@ -93,9 +99,16 @@ public:
     void setId(qint32 newId);
 
     qint32 realm() const;
+    QString stringRealm() const;
     void setRealm(qint32 newRealm);
 
     bool isEmpty();
+
+    const QString &description() const;
+    void setDescription(const QString &newDescription);
+
+private:
+    void constInit();
 
 private:
     QString _name;
@@ -106,8 +119,11 @@ private:
     Status _status;
     qint32 _rating;
     qint32 _id;
-
     qint32 _realm;
+    QString _description;
+
+    QMap<QPair<int, QString>, QString> _statuses;
+    QMap<QPair<int, QString>, QString> _classes;
 };
 
 #endif // ARMORYDATA_H

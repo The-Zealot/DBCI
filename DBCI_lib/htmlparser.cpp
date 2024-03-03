@@ -18,7 +18,7 @@ HtmlParser::~HtmlParser()
     }
 }
 
-QByteArray HtmlParser::loadPage(QUrl url)
+void HtmlParser::loadPage(QUrl url)
 {
     QNetworkRequest request(url);
     _manager->get(request);
@@ -36,7 +36,7 @@ QString HtmlParser::getTagValue(QString page, QString tag, QString closeTag)
     return html.mid(pos1, pos2 - pos1);
 }
 
-QStringList HtmlParser::getCharacterData(const QString &name, QString realm)
+void HtmlParser::getCharacterData(QString name, QString realm)
 {
     QString url = QString("https://cp.pandawow.me/armory.html?name=%1&realm=%2").arg(name).arg(realm);
 

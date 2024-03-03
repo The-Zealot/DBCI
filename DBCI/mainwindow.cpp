@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->setFixedSize(this->size());
+
     _db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("db.db");
 
@@ -60,15 +62,37 @@ void MainWindow::lockSaveButton()
 
 void MainWindow::on_pushButton_clicked()
 {
+    ui->buttonSave->setEnabled(false);
+    ui->labelIndicator->setText("Загрузка...");
+    ui->labelIndicator->setStyleSheet("color: black;");
+    ui->textEdit->clear();
+
+    switch (ui->comboBox->currentIndex())
+    {
+    case 0:
+        _ad.setRealm(3);
+        break;
+    case 1:
+        _ad.setRealm(5);
+        break;
+    case 2:
+        _ad.setRealm(10);
+        break;
+    }
+
     QString name = ui->lineEdit->text();
-    QString realm = "10";
+    QString realm = QString::number(_ad.realm());
     qDebug() << "Find character:" << name;
-    _parser->getCharacterData(name);
+    qDebug() << "Current realm:" << _ad.realm();
+    _parser->getCharacterData(name, realm);
 }
 
 
 void MainWindow::on_buttonSave_clicked()
 {
+    _ad.setDescription(ui->textEdit->toPlainText());
+    _ad.setStatus(ArmoryData::Status(ui->comboBoxStatus->currentIndex()));
+
     DatabaseWriter dbWriter(&_db);
     dbWriter.write(_ad);
 

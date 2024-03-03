@@ -17,10 +17,10 @@ public:
     HtmlParser(QObject* parent);
     ~HtmlParser();
 
-    QByteArray loadPage(QUrl url);
+    void loadPage(QUrl url);
     QString getTagValue(QString page, QString tag, QString closeTag = ">");
 
-    QStringList getCharacterData(const QString &name, QString realm = "10");
+    void getCharacterData(QString name, QString realm);
     ArmoryData getArmory();
 
     const QString &lastError() const;

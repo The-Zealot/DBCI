@@ -20,8 +20,8 @@ bool DatabaseWriter::write(const ArmoryData &data)
     {
         if(_db->transaction())
         {
-            QString query = "INSERT INTO players (name, guild, faction, race, class, char_id, date, realm) "
-                            "VALUES (\'%1\', \'%2\', \'%3\', \'%4\', \'%5\', %6, %7, %8);";
+            QString query = "INSERT INTO players (name, guild, faction, race, class, char_id, date, realm, description, status) "
+                            "VALUES (\'%1\', \'%2\', \'%3\', \'%4\', \'%5\', %6, %7, %8, \'%9\', \'%10\');";
 
             query = query
                     .arg(data.name())
@@ -31,7 +31,9 @@ bool DatabaseWriter::write(const ArmoryData &data)
                     .arg(data.getClass("ru"))
                     .arg(data.id())
                     .arg(QDate::currentDate().startOfDay().currentSecsSinceEpoch())
-                    .arg(10);
+                    .arg(data.realm())
+                    .arg(data.description())
+                    .arg(data.status("ru"));
 
             qDebug() << "Current query:" << query;
             qDebug() << "Query execution:" << _query->exec(query);
@@ -72,7 +74,7 @@ void DatabaseWriter::init()
                 "description TEXT,"
                 "char_id     INTEGER NOT NULL UNIQUE,"
                 "own_mark    TEXT"
-            ");");
+              ");");
 
     _db->exec("CREATE TABLE IF NOT EXISTS loggs ("
                   "id      INTEGER PRIMARY KEY,"

@@ -2,7 +2,7 @@
 
 ArmoryData::ArmoryData()
 {
-
+    constInit();
 }
 
 void ArmoryData::clear()
@@ -126,7 +126,7 @@ void ArmoryData::setRace(QString newRace, QString lang)
     if (newRace == "Нежить") _race      = Race::Undead;
     if (newRace == "Таурен") _race      = Race::Tauren;
     if (newRace == "Тролль") _race      = Race::Troll;
-    if (newRace == "Эльф крови") _race  = Race::BloodElf;
+    if (newRace == "Эльф Крови") _race  = Race::BloodElf;
     if (newRace == "Гоблин") _race      = Race::Goblin;
     if (newRace == "Пандарен") _race    = Race::Pandaren;
 }
@@ -134,6 +134,13 @@ void ArmoryData::setRace(QString newRace, QString lang)
 ArmoryData::Status ArmoryData::status() const
 {
     return _status;
+}
+
+QString ArmoryData::status(QString lang) const
+{
+    lang = lang.toLower();
+
+    return _statuses[{_status, lang}];
 }
 
 void ArmoryData::setStatus(Status newStatus)
@@ -175,6 +182,15 @@ QString ArmoryData::getClass(QString lang) const
     default:
         return "";
     }
+
+//    if (_classes.contains({_class, lang}))
+//    {
+//        return _classes[{_class, lang}];
+//    }
+//    else
+//    {
+//        return "";
+//    }
 }
 
 void ArmoryData::setClass(Class newClass)
@@ -224,6 +240,17 @@ qint32 ArmoryData::realm() const
     return _realm;
 }
 
+QString ArmoryData::stringRealm() const
+{
+    switch (_realm)
+    {
+        case 3: return "FUN";
+        case 5: return "x5";
+        case 10: return "x100";
+        default: return "";
+    }
+}
+
 void ArmoryData::setRealm(qint32 newRealm)
 {
     _realm = newRealm;
@@ -232,4 +259,35 @@ void ArmoryData::setRealm(qint32 newRealm)
 bool ArmoryData::isEmpty()
 {
     return _name.isEmpty();
+}
+
+const QString &ArmoryData::description() const
+{
+    return _description;
+}
+
+void ArmoryData::setDescription(const QString &newDescription)
+{
+    _description = newDescription;
+}
+
+void ArmoryData::constInit()
+{
+    _statuses[{Status::Unknown, "ru"}]      = "Неизвестно";
+    _statuses[{Status::Humiliated, "ru"}]   = "Опущен";
+    _statuses[{Status::Terminated, "ru"}]   = "Ликвидирован";
+    _statuses[{Status::Amnestied, "ru"}]    = "Амнистирован";
+    _statuses[{Status::Sold, "ru"}]         = "Продан";
+
+    _classes[{Class::Warrior, "ru"}]        = "Воин";
+    _classes[{Class::Paladin, "ru"}]        = "Паладин";
+    _classes[{Class::Hunter, "ru"}]         = "Охотник";
+    _classes[{Class::Rogue, "ru"}]          = "Разбойник";
+    _classes[{Class::Priest, "ru"}]         = "Жрец";
+    _classes[{Class::DeathKnight, "ru"}]    = "Рыцарь Смерти";
+    _classes[{Class::Shaman, "ru"}]         = "Шаман";
+    _classes[{Class::Mage, "ru"}]           = "Маг";
+    _classes[{Class::Warlock, "ru"}]        = "Чернокнижник";
+    _classes[{Class::Monk, "ru"}]           = "Монах";
+    _classes[{Class::Druid, "ru"}]          = "Друид";
 }
