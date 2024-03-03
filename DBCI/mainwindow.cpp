@@ -7,10 +7,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    _db = QSqlDatabase::addDatabase("QSQLITE");
+    _db.setDatabaseName("db.db");
+
     _parser = new HtmlParser(this);
 
     connect(_parser, &HtmlParser::parsed, this, &MainWindow::loadNext);
     connect(_parser, &HtmlParser::failed, this, &MainWindow::showError);
+    connect(_parser, &HtmlParser::failed, this, &MainWindow::lockSaveButton);
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +28,9 @@ void MainWindow::loadNext()
 
     _ad = _parser->getArmory();
 
+    ui->buttonSave->setEnabled(true);
+    ui->labelIndicator->setText("Загружено!");
+    ui->labelIndicator->setStyleSheet("color: green;");
 
     qDebug() << "Name:" << _ad.name();
     qDebug() << "Guild:" << _ad.guild();
@@ -40,7 +47,15 @@ void MainWindow::loadNext()
 
 void MainWindow::showError()
 {
+    ui->labelIndicator->setText("Ошибка!");
+    ui->labelIndicator->setStyleSheet("color: red;");
+
     QMessageBox::warning(this, "Некорректные данные", _parser->lastError());
+}
+
+void MainWindow::lockSaveButton()
+{
+    ui->buttonSave->setEnabled(false);
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -54,6 +69,12 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_buttonSave_clicked()
 {
+    DatabaseWriter dbWriter(&_db);
+    dbWriter.write(_ad);
+
+    ui->labelIndicator->setText("Сохранено!");
+    ui->labelIndicator->setStyleSheet("color: green;");
+
     TextWriter writer;
     writer.setFile("cInfo.txt");
     qDebug () << "Write data in file:" << writer.write(_ad);

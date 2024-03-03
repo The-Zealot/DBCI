@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <htmlparser.h>
 #include <textwriter.h>
+#include <databasewriter.h>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,7 @@ public:
 public slots:
     void loadNext();
     void showError();
+    void lockSaveButton();
 
 private slots:
     void on_pushButton_clicked();
@@ -31,5 +33,6 @@ private:
     Ui::MainWindow *ui;
     HtmlParser* _parser;
     ArmoryData _ad;
+    QSqlDatabase _db;
 };
 #endif // MAINWINDOW_H

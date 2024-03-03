@@ -1,5 +1,5 @@
 QT -= gui
-QT += network
+QT += network sql
 
 TEMPLATE = lib
 DEFINES += DBCI_LIB_LIBRARY
@@ -12,6 +12,7 @@ CONFIG += c++11
 
 SOURCES += \
     armorydata.cpp \
+    databasewriter.cpp \
     dbci_lib.cpp \
     htmlparser.cpp \
     ireader.cpp \
@@ -22,7 +23,9 @@ SOURCES += \
 HEADERS += \
     DBCI_lib_global.h \
     armorydata.h \
+    databasewriter.h \
     dbci_lib.h \
+    defines.h \
     htmlparser.h \
     ireader.h \
     iwriter.h \
