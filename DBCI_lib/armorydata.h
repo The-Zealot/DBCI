@@ -124,6 +124,7 @@ private:
 
     QMap<QPair<int, QString>, QString> _statuses;
     QMap<QPair<int, QString>, QString> _classes;
+    QMap<QPair<int, QString>, QString> _races;
 };
 
 #endif // ARMORYDATA_H

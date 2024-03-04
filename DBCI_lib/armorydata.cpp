@@ -74,35 +74,14 @@ ArmoryData::Race ArmoryData::race() const
 
 QString ArmoryData::race(QString lang) const
 {
-    switch (_race)
+    lang = lang.toLower();
+
+    if (_races.contains({_class, lang}))
     {
-    case ArmoryData::Human:
-        return "Человек";
-    case ArmoryData::Dwarft:
-        return "Дворф";
-    case ArmoryData::NightElf:
-        return "Ночной эльф";
-    case ArmoryData::Gnome:
-        return "Гноме";
-    case ArmoryData::Draenei:
-        return "Дреней";
-    case ArmoryData::Worgen:
-        return "Ворген";
-    case ArmoryData::Orc:
-        return "Орк";
-    case ArmoryData::Undead:
-        return "Нежить";
-    case ArmoryData::Tauren:
-        return "Таурен";
-    case ArmoryData::Troll:
-        return "Тролль";
-    case ArmoryData::BloodElf:
-        return "Эльф крови";
-    case ArmoryData::Goblin:
-        return "Гоблин";
-    case ArmoryData::Pandaren:
-        return "Пандарен";
-    default:
+        return _races[{_class, lang}];
+    }
+    else
+    {
         return "";
     }
 }
@@ -114,21 +93,22 @@ void ArmoryData::setRace(Race newRace)
 
 void ArmoryData::setRace(QString newRace, QString lang)
 {
-    lang = lang.toLower();
+    lang    = lang.toLower();
+    newRace = newRace.toLower();
 
-    if (newRace == "Человек") _race     = Race::Human;
-    if (newRace == "Дворф") _race       = Race::Dwarft;
-    if (newRace == "Гном") _race        = Race::Gnome;
-    if (newRace == "Ночной эльф") _race = Race::NightElf;
-    if (newRace == "Дреней") _race      = Race::Draenei;
-    if (newRace == "Ворген") _race      = Race::Worgen;
-    if (newRace == "Орк") _race         = Race::Orc;
-    if (newRace == "Нежить") _race      = Race::Undead;
-    if (newRace == "Таурен") _race      = Race::Tauren;
-    if (newRace == "Тролль") _race      = Race::Troll;
-    if (newRace == "Эльф Крови") _race  = Race::BloodElf;
-    if (newRace == "Гоблин") _race      = Race::Goblin;
-    if (newRace == "Пандарен") _race    = Race::Pandaren;
+    if (newRace == "человек") _race     = Race::Human;
+    if (newRace == "дворф") _race       = Race::Dwarft;
+    if (newRace == "гном") _race        = Race::Gnome;
+    if (newRace == "ночной эльф") _race = Race::NightElf;
+    if (newRace == "дреней") _race      = Race::Draenei;
+    if (newRace == "ворген") _race      = Race::Worgen;
+    if (newRace == "орк") _race         = Race::Orc;
+    if (newRace == "нежить") _race      = Race::Undead;
+    if (newRace == "таурен") _race      = Race::Tauren;
+    if (newRace == "тролль") _race      = Race::Troll;
+    if (newRace == "эльф крови") _race  = Race::BloodElf;
+    if (newRace == "гоблин") _race      = Race::Goblin;
+    if (newRace == "пандарен") _race    = Race::Pandaren;
 }
 
 ArmoryData::Status ArmoryData::status() const
@@ -155,42 +135,16 @@ ArmoryData::Class ArmoryData::getClass() const
 
 QString ArmoryData::getClass(QString lang) const
 {
-    switch(_class)
+    lang = lang.toLower();
+
+    if (_classes.contains({_class, lang}))
     {
-    case ArmoryData::Warrior:
-        return "Воин";
-    case ArmoryData::Paladin:
-        return "Паладин";
-    case ArmoryData::Hunter:
-        return "Охотник";
-    case ArmoryData::Rogue:
-        return "Разбойник";
-    case ArmoryData::Priest:
-        return "Жрец";
-    case ArmoryData::DeathKnight:
-        return "Рыцарь Смерти";
-    case ArmoryData::Shaman:
-        return "Шаман";
-    case ArmoryData::Mage:
-        return "Маг";
-    case ArmoryData::Warlock:
-        return "Чернокнижник";
-    case ArmoryData::Monk:
-        return "Монах";
-    case ArmoryData::Druid:
-        return "Друид";
-    default:
+        return _classes[{_class, lang}];
+    }
+    else
+    {
         return "";
     }
-
-//    if (_classes.contains({_class, lang}))
-//    {
-//        return _classes[{_class, lang}];
-//    }
-//    else
-//    {
-//        return "";
-//    }
 }
 
 void ArmoryData::setClass(Class newClass)
@@ -200,19 +154,20 @@ void ArmoryData::setClass(Class newClass)
 
 void ArmoryData::setClass(QString newClass, QString lang)
 {
-    lang = lang.toLower();
+    lang        = lang.toLower();
+    newClass    = newClass.toLower();
 
-    if (newClass == "Воин") _class          = Class::Warrior;
-    if (newClass == "Паладин") _class       = Class::Paladin;
-    if (newClass == "Охотник") _class       = Class::Hunter;
-    if (newClass == "Разбойник") _class     = Class::Rogue;
-    if (newClass == "Жрец") _class          = Class::Priest;
-    if (newClass == "Шаман") _class         = Class::Shaman;
-    if (newClass == "Маг") _class           = Class::Mage;
-    if (newClass == "Чернокнижник") _class  = Class::Warlock;
-    if (newClass == "Монах") _class         = Class::Monk;
-    if (newClass == "Друид") _class         = Class::Druid;
-    if (newClass == "Рыцарь Смерти") _class = Class::DeathKnight;
+    if (newClass == "воин") _class          = Class::Warrior;
+    if (newClass == "паладин") _class       = Class::Paladin;
+    if (newClass == "охотник") _class       = Class::Hunter;
+    if (newClass == "разбойник") _class     = Class::Rogue;
+    if (newClass == "жрец") _class          = Class::Priest;
+    if (newClass == "шаман") _class         = Class::Shaman;
+    if (newClass == "маг") _class           = Class::Mage;
+    if (newClass == "чернокнижник") _class  = Class::Warlock;
+    if (newClass == "монах") _class         = Class::Monk;
+    if (newClass == "друид") _class         = Class::Druid;
+    if (newClass == "рыцарь смерти") _class = Class::DeathKnight;
 }
 
 qint32 ArmoryData::rating() const
@@ -290,4 +245,18 @@ void ArmoryData::constInit()
     _classes[{Class::Warlock, "ru"}]        = "Чернокнижник";
     _classes[{Class::Monk, "ru"}]           = "Монах";
     _classes[{Class::Druid, "ru"}]          = "Друид";
+
+    _races[{Race::Human, "ru"}]             = "Человек";
+    _races[{Race::Dwarft, "ru"}]            = "Дворф";
+    _races[{Race::NightElf, "ru"}]          = "Ночной эльф";
+    _races[{Race::Gnome, "ru"}]             = "Гном";
+    _races[{Race::Draenei, "ru"}]           = "Дреней";
+    _races[{Race::Worgen, "ru"}]            = "Ворген";
+    _races[{Race::Orc, "ru"}]               = "Орк";
+    _races[{Race::Undead, "ru"}]            = "Нежить";
+    _races[{Race::Tauren, "ru"}]            = "Таурен";
+    _races[{Race::Troll, "ru"}]             = "Тролль";
+    _races[{Race::BloodElf, "ru"}]          = "Эльф крови";
+    _races[{Race::Goblin, "ru"}]            = "Гоблин";
+    _races[{Race::Pandaren, "ru"}]          = "Пандарен";
 }
