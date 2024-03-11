@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
+    <width>858</width>
     <height>352</height>
    </rect>
   </property>
@@ -65,6 +65,12 @@
        <property name="icon">
         <iconset resource="resource.qrc">
          <normaloff>:/img/img/refresh.png</normaloff>:/img/img/refresh.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
        </property>
        <property name="flat">
         <bool>true</bool>

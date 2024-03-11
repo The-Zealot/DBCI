@@ -18,7 +18,6 @@ ViewForm::ViewForm(QSqlDatabase &db, QWidget *parent) :
 
     _model->setHeaderData(DB_TABLE_PLAYER_NAME, Qt::Horizontal, "Имя");
     _model->setHeaderData(DB_TABLE_PLAYER_RACE, Qt::Horizontal, "Раса");
-    _model->setHeaderData(DB_TABLE_PLAYER_DATE, Qt::Horizontal, "Дата");
     _model->setHeaderData(DB_TABLE_PLAYER_CLASS, Qt::Horizontal, "Класс");
     _model->setHeaderData(DB_TABLE_PLAYER_GUILD, Qt::Horizontal, "Гильдия");
     _model->setHeaderData(DB_TABLE_PLAYER_REALM, Qt::Horizontal, "Реалм");
@@ -27,9 +26,17 @@ ViewForm::ViewForm(QSqlDatabase &db, QWidget *parent) :
     _model->setHeaderData(DB_TABLE_PLAYER_CHAR_ID, Qt::Horizontal, "ID");
     _model->setHeaderData(DB_TABLE_PLAYER_DESCRIPTION, Qt::Horizontal, "Описание");
 
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_NAME);
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_RACE);
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_REALM);
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_STATUS);
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_CHAR_ID);
+    ui->tableView->resizeColumnToContents(DB_TABLE_PLAYER_FACTION);
+
     ui->labelBaseName->setText(_db.databaseName());
     ui->labelTableName->setText(_model->tableName());
     ui->tableView->hideColumn(DB_TABLE_PLAYER_ID);
+    ui->tableView->hideColumn(DB_TABLE_PLAYER_DATE);
     ui->tableView->setEditTriggers(QTableView::NoEditTriggers);
 //    ui->tableView->setSortingEnabled(true);
 
