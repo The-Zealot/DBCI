@@ -20,6 +20,9 @@ public:
     explicit ViewForm(QSqlDatabase &db, QWidget *parent = nullptr);
     ~ViewForm();
 
+private slots:
+    void on_buttonUpdate_clicked();
+
 private:
     Ui::ViewForm *ui;
     QSqlDatabase _db;

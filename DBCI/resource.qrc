@@ -2,5 +2,6 @@
     <qresource prefix="/img">
         <file>img/ParserIcon.png</file>
         <file>img/ParserIcon_small.png</file>
+        <file>img/refresh.png</file>
     </qresource>
 </RCC>

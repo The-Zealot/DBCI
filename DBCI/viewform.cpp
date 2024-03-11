@@ -41,3 +41,11 @@ ViewForm::~ViewForm()
     delete _model;
     delete ui;
 }
+
+void ViewForm::on_buttonUpdate_clicked()
+{
+    _db.open();
+    _model->select();
+    _db.close();
+}
+
