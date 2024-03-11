@@ -6,7 +6,7 @@ HtmlParser::HtmlParser(QObject *parent)
     connect(_manager, &QNetworkAccessManager::finished, this, &HtmlParser::replyFinished);
     connect(this, &HtmlParser::pageLoaded, this, &HtmlParser::getArmoryUrl);
 
-    _error = "";
+    _error = HtmlError::getError();
     _isFirstLoad = true;
 }
 
@@ -79,7 +79,7 @@ void HtmlParser::getArmoryUrl()
     if (armoryUrl.isEmpty())
     {
         qDebug() << "getTagValue() returns wrong name";
-        _error = "Empty armory";
+        _error->setCurrentErrorCode(HTML_ERROR_EMPTY_DATA);
         emit failed();
         return;
     }
@@ -108,7 +108,7 @@ void HtmlParser::parse()
     qDebug() << "Parsing has done";
 }
 
-const QString &HtmlParser::lastError() const
+const QString HtmlParser::lastError() const
 {
-    return _error;
+    return _error->toString();
 }

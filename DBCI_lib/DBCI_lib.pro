@@ -14,6 +14,7 @@ SOURCES += \
     armorydata.cpp \
     databasewriter.cpp \
     dbci_lib.cpp \
+    htmlerror.cpp \
     htmlparser.cpp \
     ireader.cpp \
     iwriter.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     databasewriter.h \
     dbci_lib.h \
     defines.h \
+    htmlerror.h \
     htmlparser.h \
     ireader.h \
     iwriter.h \

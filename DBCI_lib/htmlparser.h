@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QFile>
 #include <armorydata.h>
+#include "htmlerror.h"
 
 class DBCI_LIB_EXPORT HtmlParser : public QObject
 {
@@ -23,7 +24,7 @@ public:
     void getCharacterData(QString name, QString realm);
     ArmoryData getArmory();
 
-    const QString &lastError() const;
+    const QString lastError() const;
 
 public slots:
     void replyFinished(QNetworkReply* reply);
@@ -40,7 +41,7 @@ private:
     bool _isFirstLoad;
     QByteArray _data;
     ArmoryData _armoryData;
-    QString _error;
+    HtmlError* _error;
 };
 
 #endif // HTMLPARSER_H
