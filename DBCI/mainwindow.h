@@ -6,6 +6,7 @@
 #include <textwriter.h>
 #include <databasewriter.h>
 #include <QMessageBox>
+#include "viewform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,10 +30,13 @@ private slots:
 
     void on_buttonSave_clicked();
 
+    void on_buttonLoad_clicked();
+
 private:
     Ui::MainWindow *ui;
     HtmlParser* _parser;
     ArmoryData _ad;
     QSqlDatabase _db;
+    ViewForm* _viewForm;
 };
 #endif // MAINWINDOW_H

@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     _parser = new HtmlParser(this);
 
+    _viewForm = new ViewForm(_db);
+
     connect(_parser, &HtmlParser::parsed, this, &MainWindow::loadNext);
     connect(_parser, &HtmlParser::failed, this, &MainWindow::showError);
     connect(_parser, &HtmlParser::failed, this, &MainWindow::lockSaveButton);
@@ -52,7 +54,7 @@ void MainWindow::showError()
     ui->labelIndicator->setText("Ошибка!");
     ui->labelIndicator->setStyleSheet("color: red;");
 
-    QMessageBox::warning(this, "Некорректные данные", _parser->lastError());
+    QMessageBox::warning(this, "Не найдено", _parser->lastError());
 }
 
 void MainWindow::lockSaveButton()
@@ -102,5 +104,11 @@ void MainWindow::on_buttonSave_clicked()
     TextWriter writer;
     writer.setFile("cInfo.txt");
     qDebug () << "Write data in file:" << writer.write(_ad);
+}
+
+
+void MainWindow::on_buttonLoad_clicked()
+{
+    _viewForm->show();
 }
 
