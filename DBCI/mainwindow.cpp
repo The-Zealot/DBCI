@@ -44,9 +44,9 @@ void MainWindow::loadNext()
     ui->editGuild->setText(_ad.guild());
     ui->editID->setText(QString::number(_ad.id()));
 
-    ui->editFaction->setText(_ad.faction("ru"));
-    ui->editRace->setText(_ad.race("ru"));
-    ui->editClass->setText(_ad.getClass("ru"));
+    ui->editFaction->setText(_av.getFaction(_ad, "ru"));
+    ui->editRace->setText(_av.getRace(_ad, "ru"));
+    ui->editClass->setText(_av.getClass(_ad, "ru"));
 }
 
 void MainWindow::showError()
@@ -93,7 +93,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_buttonSave_clicked()
 {
     _ad.setDescription(ui->textEdit->toPlainText());
-    _ad.setStatus(ArmoryData::Status(ui->comboBoxStatus->currentIndex()));
+    _ad.setStatus(Status(ui->comboBoxStatus->currentIndex()));
 
     DatabaseWriter dbWriter(&_db);
     dbWriter.write(_ad);

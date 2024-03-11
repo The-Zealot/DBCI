@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QFile>
 #include <armorydata.h>
+#include "armoryviewer.h"
 #include "htmlerror.h"
 
 class DBCI_LIB_EXPORT HtmlParser : public QObject
@@ -41,6 +42,7 @@ private:
     bool _isFirstLoad;
     QByteArray _data;
     ArmoryData _armoryData;
+    ArmoryViewer _armoryViewer;
     HtmlError* _error;
 };
 

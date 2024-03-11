@@ -36,6 +36,7 @@ private:
     Ui::MainWindow *ui;
     HtmlParser* _parser;
     ArmoryData _ad;
+    ArmoryViewer _av;
     QSqlDatabase _db;
     ViewForm* _viewForm;
 };

@@ -12,6 +12,7 @@ CONFIG += c++11
 
 SOURCES += \
     armorydata.cpp \
+    armoryviewer.cpp \
     databasewriter.cpp \
     dbci_lib.cpp \
     htmlerror.cpp \
@@ -24,6 +25,8 @@ SOURCES += \
 HEADERS += \
     DBCI_lib_global.h \
     armorydata.h \
+    armoryenums.h \
+    armoryviewer.h \
     databasewriter.h \
     dbci_lib.h \
     defines.h \

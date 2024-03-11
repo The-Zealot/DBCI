@@ -26,14 +26,14 @@ bool DatabaseWriter::write(const ArmoryData &data)
             query = query
                     .arg(data.name())
                     .arg(data.guild())
-                    .arg(data.faction("ru"))
-                    .arg(data.race("ru"))
-                    .arg(data.getClass("ru"))
+                    .arg(this->getFaction(data, "ru"))
+                    .arg(this->getRace(data, "ru"))
+                    .arg(this->getClass(data, "ru"))
                     .arg(data.id())
                     .arg(QDate::currentDate().startOfDay().currentSecsSinceEpoch())
                     .arg(data.realm())
                     .arg(data.description())
-                    .arg(data.status("ru"));
+                    .arg(this->getStatus(data, "ru"));
 
             qDebug() << "Current query:" << query;
             qDebug() << "Query execution:" << _query->exec(query);

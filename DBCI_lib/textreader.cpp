@@ -26,9 +26,9 @@ ArmoryData TextReader::read()
         QStringList sList = line.split(";");
         result.setName(sList.at(0));
         result.setGuild(sList.at(1));
-        result.setFaction(sList.at(2));
-        result.setRace(sList.at(3));
-        result.setClass(sList.at(4));
+        this->setFaction(result, sList.at(2));
+        this->setRace(result, sList.at(3));
+        this->setClass(result, sList.at(4));
         result.setId(sList.at(5).toInt());
 
         _file.close();

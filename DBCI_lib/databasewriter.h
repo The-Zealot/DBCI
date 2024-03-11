@@ -2,13 +2,14 @@
 #define DATABASEWRITER_H
 
 #include "iwriter.h"
+#include "armoryviewer.h"
 #include "DBCI_lib_global.h"
 #include <QDate>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
-class DBCI_LIB_EXPORT DatabaseWriter : public IWriter
+class DBCI_LIB_EXPORT DatabaseWriter : public IWriter, public ArmoryViewer
 {
 public:
     DatabaseWriter(QSqlDatabase* db);

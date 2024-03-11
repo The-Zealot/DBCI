@@ -2,10 +2,11 @@
 #define TEXTWRITER_H
 
 #include "iwriter.h"
+#include "armoryviewer.h"
 #include <QFile>
 #include <QDebug>
 
-class DBCI_LIB_EXPORT TextWriter : public IWriter
+class DBCI_LIB_EXPORT TextWriter : public IWriter, public ArmoryViewer
 {
 public:
     TextWriter();

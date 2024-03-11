@@ -2,11 +2,12 @@
 #define TEXTREADER_H
 
 #include "ireader.h"
+#include "armoryviewer.h"
 #include "DBCI_lib_global.h"
 
 #include <QFile>
 
-class DBCI_LIB_EXPORT TextReader : public IReader
+class DBCI_LIB_EXPORT TextReader : public IReader, public ArmoryViewer
 {
 public:
     TextReader();

@@ -27,9 +27,9 @@ bool TextWriter::write(const ArmoryData &data)
         QString str;
         str.append(data.name() + ";");
         str.append(data.guild() + ";");
-        str.append(data.faction("ru") + ";");
-        str.append(data.race("ru") + ";");
-        str.append(data.getClass("ru") + ";");
+        str.append(this->getFaction(data, "ru") + ";");
+        str.append(this->getRace(data, "ru") + ";");
+        str.append(this->getClass(data, "ru") + ";");
         str.append(QString::number(data.id()));
         str.append("\n");
         _file.write(str.toUtf8());

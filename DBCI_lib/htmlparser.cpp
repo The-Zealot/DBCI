@@ -87,9 +87,9 @@ void HtmlParser::getArmoryUrl()
     QStringList characterData = getTagValue(_data, "<tr class=\"odd\">\n", "</tr>").split("</td>");
 
     _armoryData.setName(getTagValue(characterData.at(0), ".html\">", "</a>"));
-    _armoryData.setFaction(getTagValue(characterData.at(2), "<td>"));
-    _armoryData.setRace(getTagValue(characterData.at(3), "<td>"));
-    _armoryData.setClass(getTagValue(characterData.at(4), "<td>"));
+    _armoryViewer.setFaction(_armoryData, getTagValue(characterData.at(2), "<td>"));
+    _armoryViewer.setRace(_armoryData, getTagValue(characterData.at(3), "<td>"));
+    _armoryViewer.setClass(_armoryData, getTagValue(characterData.at(4), "<td>"));
     _armoryData.setId(getTagValue(armoryUrl, QString("char-%1-").arg(_armoryData.realm()), ".html").toInt());
 
     loadPage(armoryUrl);
