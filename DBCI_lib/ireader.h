@@ -11,6 +11,7 @@ public:
     IReader();
 
     virtual ArmoryData read() = 0;
+    virtual QVector<ArmoryData> readAll() = 0;
 };
 
 #endif // IREADER_H
