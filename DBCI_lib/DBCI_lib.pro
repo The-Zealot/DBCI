@@ -20,6 +20,7 @@ SOURCES += \
     htmlparser.cpp \
     ireader.cpp \
     iwriter.cpp \
+    logger.cpp \
     textreader.cpp \
     textwriter.cpp
 
@@ -36,6 +37,7 @@ HEADERS += \
     htmlparser.h \
     ireader.h \
     iwriter.h \
+    logger.h \
     textreader.h \
     textwriter.h
 
