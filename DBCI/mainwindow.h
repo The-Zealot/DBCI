@@ -7,6 +7,7 @@
 #include <databasewriter.h>
 #include <QMessageBox>
 #include "viewform.h"
+#include "importform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +25,7 @@ public slots:
     void loadNext();
     void showError();
     void lockSaveButton();
+    void showImportForm();
 
 private slots:
     void on_pushButton_clicked();
@@ -39,5 +41,6 @@ private:
     ArmoryViewer _av;
     QSqlDatabase _db;
     ViewForm* _viewForm;
+    ImportForm* _importForm;
 };
 #endif // MAINWINDOW_H

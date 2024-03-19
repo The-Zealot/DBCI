@@ -14,15 +14,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     _parser = new HtmlParser(this);
 
-    _viewForm = new ViewForm(_db);
+    _viewForm   = new ViewForm(_db);
+    _importForm = new ImportForm(_db);
 
     connect(_parser, &HtmlParser::parsed, this, &MainWindow::loadNext);
     connect(_parser, &HtmlParser::failed, this, &MainWindow::showError);
     connect(_parser, &HtmlParser::failed, this, &MainWindow::lockSaveButton);
+    connect(ui->actionImport, &QAction::triggered, this, &MainWindow::showImportForm);
 }
 
 MainWindow::~MainWindow()
 {
+    delete _viewForm;
+    delete _importForm;
     delete ui;
 }
 
@@ -60,6 +64,11 @@ void MainWindow::showError()
 void MainWindow::lockSaveButton()
 {
     ui->buttonSave->setEnabled(false);
+}
+
+void MainWindow::showImportForm()
+{
+    _importForm->show();
 }
 
 void MainWindow::on_pushButton_clicked()
