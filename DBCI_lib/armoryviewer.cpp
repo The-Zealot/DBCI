@@ -43,6 +43,7 @@ void ArmoryViewer::setClass(ArmoryData &armoryData, QString newClass)
     if (newClass == "разбойник") armoryData.setClass(Class::Rogue);
     if (newClass == "жрец") armoryData.setClass(Class::Priest);
     if (newClass == "шаман") armoryData.setClass(Class::Shaman);
+    if (newClass == "маг") armoryData.setClass(Class::Mage);
     if (newClass == "чернокнижник") armoryData.setClass(Class::Warlock);
     if (newClass == "монах") armoryData.setClass(Class::Monk);
     if (newClass == "друид") armoryData.setClass(Class::Druid);
